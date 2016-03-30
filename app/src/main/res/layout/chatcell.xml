@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="15dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/one"
+        android:text="E ai !"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/two"
+        android:text="E ai, tudo bem?"
+        android:layout_below="@id/one"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/three"
+        android:text="Sim, e voçê ?"
+        android:layout_below="@id/two"
+        android:layout_alignParentLeft="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/four"
+        android:text="Bem, consegui terminal o relatório ate o prazo, foi demais!"
+        android:layout_below="@id/three"
+        android:gravity="right"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/send"
+        android:text="Send"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_width="100dp"
+        android:textColor="#ffffff"
+        android:background="#311B92"
+        android:layout_height="40dp" />
+
+    <EditText
+        android:layout_alignParentBottom="true"
+        android:hint="Type message"
+        android:background="@drawable/bg_edittext"
+        android:layout_toLeftOf="@id/send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</RelativeLayout>
