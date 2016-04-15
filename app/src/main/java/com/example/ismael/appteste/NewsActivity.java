@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.app.Activity;
+import android.view.Menu;
 import android.widget.ListView;
 
 import com.example.ismael.appteste.adapter.AdapterList;
@@ -23,7 +24,9 @@ public class NewsActivity extends Activity {
         ListView listView = (ListView) findViewById(R.id.listView);
 
         ActionBar bar = getActionBar();
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0000ff")));
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F44336")));
+        bar.setTitle("");
+        getActionBar().setIcon(android.R.color.transparent);
 
         List<News> list = new ArrayList<>();
 
@@ -47,9 +50,12 @@ public class NewsActivity extends Activity {
 
     }
 
-
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        return super.onCreateOptionsMenu(menu);
+    }
 
 
     //

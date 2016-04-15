@@ -1,8 +1,12 @@
 package com.example.ismael.appteste;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -40,5 +44,15 @@ public class ChatActivity extends Activity {
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        ActionBar actionBar = getActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#F44336")));
+        actionBar.setTitle("");
+        actionBar.setIcon(android.R.color.transparent);
+        return super.onCreateOptionsMenu(menu);
     }
 }

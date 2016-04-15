@@ -15,8 +15,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:icon="@drawable/logo2"
+        android:label="Hecato"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
@@ -37,20 +37,26 @@
         <activity
             android:name=".CalendarActivity"
             android:label="Agenda" />
+        <activity android:name=".NewsActivity" />
         <activity
-            android:name=".NewsActivity"
-            android:label="Noticias" />
-        <activity android:name=".ContactUsActivity"
-            android:label="Fale Conosco"
-            />
-        <activity android:name=".SindicateActivity"
-            android:label="O Sindicato"/>
-        <activity android:name=".PartnerActivity"
-            android:label="Parceiros"/>
-        <activity android:name=".ChatActivity"
-            android:label="Chats"
-            ></activity>
-        <activity android:name=".ChatDetailActivity"></activity>
+            android:name=".ContactUsActivity"
+            android:label="Fale Conosco" />
+        <activity
+            android:name=".SindicateActivity"
+            android:label="O Sindicato" />
+        <activity
+            android:name=".PartnerActivity"
+            android:label="Parceiros" />
+        <activity
+            android:name=".ChatActivity"
+            android:label="Chats" />
+        <activity android:name=".ChatDetailActivity" />
+        <activity
+            android:name=".BeneficioActivity"
+            android:label="@string/title_activity_beneficio" />
+        <activity
+            android:name=".SocioActivity"
+            android:label="@string/title_activity_socio"></activity>
     </application>
 
 </manifest>

@@ -9,14 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ismael.appteste.CalendarActivity">
 
-    <DatePicker
-        android:id="@+id/datepicker"
-        android:layout_width="match_parent"
-        android:layout_height="250dp"></DatePicker>
-
-
     <Button
-        android:layout_below="@id/datepicker"
         android:id="@+id/btnDate"
         android:text="date"
         android:layout_width="match_parent"

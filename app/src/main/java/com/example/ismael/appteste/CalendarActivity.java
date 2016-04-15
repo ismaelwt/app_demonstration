@@ -2,7 +2,10 @@ package com.example.ismael.appteste;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.provider.CalendarContract;
@@ -30,8 +33,9 @@ public class CalendarActivity extends Activity {
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*setDateTimeField();
+                datePickerDialog.show();*/
                 setDateTimeField();
-                datePickerDialog.show();
             }
         });
 
@@ -40,20 +44,33 @@ public class CalendarActivity extends Activity {
 
 
     private void setDateTimeField() {
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2016, 04 - 1, 18, 7, 30);
 
-        final SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+        if (Build.VERSION.SDK_INT >= 14) {
+            Intent intent = new Intent(Intent.ACTION_INSERT)
+                    .setData(CalendarContract.Events.CONTENT_URI)
+                    .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                    .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, beginTime.getTimeInMillis())
+                    .putExtra(CalendarContract.Events.TITLE, "Audiência ")
+                    .putExtra(CalendarContract.Events.DESCRIPTION, "Encontro com ...")
+                    .putExtra(CalendarContract.Events.EVENT_LOCATION, "No Forum")
+                    .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
+                    .putExtra(Intent.EXTRA_EMAIL, "rowan@example.com,trevor@example.com");
+            startActivity(intent);
+        }
 
-        Calendar newCalendar = Calendar.getInstance();
-        datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                Calendar newDate = Calendar.getInstance();
-                newDate.set(year, monthOfYear, dayOfMonth);
-                Toast.makeText(CalendarActivity.this, sdf.format(newDate.getTime()).toString(), Toast.LENGTH_LONG).show();
-                //data.setText(sdf.format(newDate.getTime()));
-            }
-
-        },newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+        else {
+            Calendar cal = Calendar.getInstance();
+            Intent intent = new Intent(Intent.ACTION_EDIT);
+            intent.setType("vnd.android.cursor.item/event");
+            intent.putExtra("beginTime", cal.getTimeInMillis());
+            intent.putExtra("allDay", true);
+            intent.putExtra("rrule", "FREQ=YEARLY");
+            intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
+            intent.putExtra("title", "A Test Event from android app");
+            startActivity(intent);
+        }
     }
 
 

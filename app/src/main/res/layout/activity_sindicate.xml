@@ -1,39 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+<ScrollView
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.ismael.appteste.SindicateActivity">
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <TextView
-        android:id="@+id/title"
-        android:text="Sindicato"
-        android:textSize="20dp"
-        android:textStyle="bold|italic"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="com.example.ismael.appteste.SindicateActivity">
 
-    <ImageView
-        android:id="@+id/img"
-        android:src="@drawable/sindicato"
-        android:layout_below="@id/title"
-        android:layout_width="match_parent"
-        android:layout_height="250dp" />
+        <LinearLayout
+            android:id="@+id/imagem"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:background="@android:drawable/dialog_holo_light_frame"
+            android:layout_height="250dp">
 
-    <TextView
-        android:id="@+id/descrption"
-        android:layout_below="@id/img"
-        android:layout_marginTop="8dp"
-        android:text=" mantém uma sede recreativa no Balneário Barra do Sul para os momentos de lazer dos servidores sindicalizados.
-A estrutura conta com 12 chalés equipados com geladeira, televisores, fogão, ventiladores e utensílios domésticos. As acomodações são para seis pessoas.
-O servidor e seus dependentes podem utilizar os serviços, com a diária simbólica de R$ 25 por chalé. Dependentes e outros trabalhadores sindicalizados não pagam. Para convidados, o valor é de R$ 25 pessoa ao dia.
-No período de dezembro a março, devido alta temporada e grande procura, as estadas são restritas de segunda a quinta ou de sexta a domingo. Para esses meses, os agendamentos são sorteados, a fim de atender a demanda de férias e recesso de fim de ano."
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/img"
+                android:background="@drawable/sindicato"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_horizontal"
+                android:adjustViewBounds="true" />
 
-</RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/title"
+            android:text="História"
+            android:textSize="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_below="@id/imagem"
+            android:textStyle="bold|italic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/descrption"
+            android:layout_below="@id/title"
+            android:layout_marginTop="8dp"
+            android:text=" mantém uma sede recreativa no Balneário Barra do Sul para os momentos de lazer dos servidores sindicalizados.
+    A estrutura conta com 12 chalés equipados com geladeira, televisores, fogão, ventiladores e utensílios domésticos. As acomodações são para seis pessoas.
+    O servidor e seus dependentes podem utilizar os serviços, com a diária simbólica de R$ 25 por chalé. Dependentes e outros trabalhadores sindicalizados não pagam. Para convidados, o valor é de R$ 25 pessoa ao dia.
+    No período de dezembro a março, devido alta temporada e grande procura, as estadas são restritas de segunda a quinta ou de sexta a domingo. Para esses meses, os agendamentos são sorteados, a fim de atender a demanda de férias e recesso de fim de ano."
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn"
+            android:drawableLeft="@drawable/add2"
+            android:text="Missão"
+            android:layout_below="@id/descrption"
+            android:layout_marginTop="8dp"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <Button
+            android:id="@+id/btn2"
+            android:drawableLeft="@drawable/add2"
+            android:text="Visão"
+            android:layout_below="@id/btn"
+            android:layout_marginTop="8dp"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <Button
+            android:drawableLeft="@drawable/add2"
+            android:text="Valores"
+            android:layout_below="@id/btn2"
+            android:layout_marginTop="8dp"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </RelativeLayout>
+</ScrollView>

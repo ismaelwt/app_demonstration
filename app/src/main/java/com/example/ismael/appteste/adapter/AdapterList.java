@@ -1,6 +1,7 @@
 package com.example.ismael.appteste.adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,8 @@ public class AdapterList extends ArrayAdapter<News> {
 
         ImageView image = (ImageView) rootView.findViewById(R.id.image);
         TextView description = (TextView) rootView.findViewById(R.id.descrption);
+        TextView leiamais = (TextView) rootView.findViewById(R.id.leiamais);
+        leiamais.setPaintFlags(leiamais.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         title.setText(values.get(position).getTitulo());
         description.setText(values.get(position).getDescricao());

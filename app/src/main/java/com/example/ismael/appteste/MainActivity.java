@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.Image;
+import android.os.Build;
 import android.provider.CalendarContract;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.ImageButton;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class MainActivity extends Activity {
@@ -34,6 +36,24 @@ public class MainActivity extends Activity {
         ImageButton about = (ImageButton) findViewById(R.id.about);
         ImageButton partner = (ImageButton) findViewById(R.id.partner);
         ImageButton chat = (ImageButton) findViewById(R.id.chat);
+        ImageButton beneficios = (ImageButton) findViewById(R.id.beneficios);
+        ImageButton socio =  (ImageButton) findViewById(R.id.socio);
+
+        socio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, SocioActivity.class);
+                startActivity(i);
+            }
+        });
+
+        beneficios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, BeneficioActivity.class);
+                startActivity(i);
+            }
+        });
 
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,8 +101,8 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(MainActivity.this, CalendarActivity.class);
-                startActivity(i);
+                /*Intent i = new Intent(MainActivity.this, CalendarActivity.class);
+                startActivity(i);*/
 
                 /*Intent intent = new Intent(Intent.ACTION_INSERT);
                 intent.setType("vnd.android.cursor.item/event");
@@ -109,6 +129,7 @@ public class MainActivity extends Activity {
 
                 intent.setData(CalendarContract.Events.CONTENT_URI);
                 startActivity(intent);*/
+                setDateTimeField();
             }
         });
 
@@ -120,6 +141,37 @@ public class MainActivity extends Activity {
                 startActivity(i);
             }
         });
+    }
+
+
+    private void setDateTimeField() {
+        Calendar beginTime = Calendar.getInstance();
+        beginTime.set(2016, 04 - 1, 18, 7, 30);
+
+        if (Build.VERSION.SDK_INT >= 14) {
+            Intent intent = new Intent(Intent.ACTION_INSERT)
+                    .setData(CalendarContract.Events.CONTENT_URI)
+                    .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, beginTime.getTimeInMillis())
+                    .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, beginTime.getTimeInMillis())
+                    .putExtra(CalendarContract.Events.TITLE, "Audiência ")
+                    .putExtra(CalendarContract.Events.DESCRIPTION, "Encontro com ...")
+                    .putExtra(CalendarContract.Events.EVENT_LOCATION, "No Forum")
+                    .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
+                    .putExtra(Intent.EXTRA_EMAIL, "rowan@example.com,trevor@example.com");
+            startActivity(intent);
+        }
+
+        else {
+            Calendar cal = Calendar.getInstance();
+            Intent intent = new Intent(Intent.ACTION_EDIT);
+            intent.setType("vnd.android.cursor.item/event");
+            intent.putExtra("beginTime", cal.getTimeInMillis());
+            intent.putExtra("allDay", true);
+            intent.putExtra("rrule", "FREQ=YEARLY");
+            intent.putExtra("endTime", cal.getTimeInMillis()+60*60*1000);
+            intent.putExtra("title", "A Test Event from android app");
+            startActivity(intent);
+        }
     }
 
 
